@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un cadeau spécial pour Emmanuela ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #fff5f5;
+            color: #d23669;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .message {
+            margin-top: 100px;
+            min-height: 70vh;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .cadeau-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cadeau-btn {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .cadeau-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .poissons {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .poisson {
+            font-size: 3em;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h1>Bonjour ma chère Emmanuela ❤️</h1>
+        <p>Je voulais te faire un petit cadeau spécial pour te montrer à quel point tu comptes pour moi...</p>
+        <p>Défile vers le bas pour découvrir ta surprise !</p>
+        <p>↓</p>
+    </div>
+    
+    <div class="cadeau-section">
+        <h2>Ton cadeau spécial t'attend !</h2>
+        <p>Clique sur le bouton ci-dessous pour recevoir ton cadeau</p>
+        <button class="cadeau-btn" onclick="revealPoissons()">
+            🎁 Obtenir mon cadeau
+        </button>
+        
+        <div id="poissons" class="poissons">
+            <div class="poisson">🐠</div>
+            <div class="poisson">🐟</div>
+            <div class="poisson">🐡</div>
+            <div class="poisson">🦈</div>
+            <div class="poisson">🐋</div>
+            <div class="poisson">🐙</div>
+            <div class="poisson">🦀</div>
+            <div class="poisson">🦐</div>
+            <div class="poisson">POISSON D'AVRIL ! 😘</div>
+        </div>
+    </div>
+
+    <script>
+        function revealPoissons() {
+            const poissons = document.getElementById('poissons');
+            const btn = document.querySelector('.cadeau-btn');
+            
+            // Afficher les poissons
+            poissons.style.display = 'flex';
+            
+            // Changer le texte du bouton
+            btn.innerHTML = 'POISSON D\'AVRIL ! 🎣';
+            btn.style.backgroundColor = '#45aaf2';
+            
+            // Animation supplémentaire
+            document.body.style.backgroundColor = '#f1f2f6';
+            
+            // Ajouter des poissons supplémentaires de manière aléatoire
+            setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                    addRandomPoisson();
+                }
+            }, 1000);
+        }
+        
+        function addRandomPoisson() {
+            const poissonsContainer = document.getElementById('poissons');
+            const emojis = ['🐠', '🐟', '🐡', '🦈', '🐋', '🐙', '🦀', '🦐'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            const poisson = document.createElement('div');
+            poisson.className = 'poisson';
+            poisson.textContent = randomEmoji;
+            poisson.style.left = Math.random() * 100 + 'vw';
+            poisson.style.animationDelay = Math.random() * 3 + 's';
+            
+            poissonsContainer.appendChild(poisson);
+        }
+    </script>
+</body>
+</html>
